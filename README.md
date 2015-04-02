@@ -111,71 +111,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 
 **[Back to top](#table-of-contents)**
 
-## IIFE
-### JavaScript Closures
-###### [Style [Y010](#style-y010)]
-
-  - Wrap Angular components in an Immediately Invoked Function Expression (IIFE).
-
-  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
-
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
-
-  ```javascript
-  /* avoid */
-  // logger.js
-  angular
-      .module('app')
-      .factory('logger', logger);
-
-  // logger function is added as a global variable
-  function logger() { }
-
-  // storage.js
-  angular
-      .module('app')
-      .factory('storage', storage);
-
-  // storage function is added as a global variable
-  function storage() { }
-  ```
-
-  ```javascript
-  /**
-   * recommended
-   *
-   * no globals are left behind
-   */
-
-  // logger.js
-  (function() {
-      'use strict';
-
-      angular
-          .module('app')
-          .factory('logger', logger);
-
-      function logger() { }
-  })();
-
-  // storage.js
-  (function() {
-      'use strict';
-
-      angular
-          .module('app')
-          .factory('storage', storage);
-
-      function storage() { }
-  })();
-  ```
-
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax.
-
-  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
-
-**[Back to top](#table-of-contents)**
-
 ## Modules
 
 ### Avoid Naming Collisions
@@ -1263,55 +1198,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-###### [Style [Y076](#style-y076)]
-
-  - Use `bindToController = true` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
-
-    *Why?*: It makes it easy to bind outer scope to the directive's controller scope.
-
-    Note: `bindToController` was introduced in Angular 1.3.0.
-
-  ```html
-  <div my-example max="77"></div>
-  ```
-
-  ```javascript
-  angular
-      .module('app')
-      .directive('myExample', myExample);
-
-  function myExample() {
-      var directive = {
-          restrict: 'EA',
-          templateUrl: 'app/feature/example.directive.html',
-          scope: {
-              max: '='
-          },
-          controller: ExampleController,
-          controllerAs: 'vm',
-          bindToController: true
-      };
-
-      return directive;
-  }
-
-  function ExampleController() {
-      var vm = this;
-      vm.min = 3;
-      console.log('CTRL: vm.min = %s', vm.min);
-      console.log('CTRL: vm.max = %s', vm.max);
-  }
-  ```
-
-  ```html
-  <!-- example.directive.html -->
-  <div>hello world</div>
-  <div>max={{vm.max}}<input ng-model="vm.max"/></div>
-  <div>min={{vm.min}}<input ng-model="vm.min"/></div>
-  ```
-
-**[Back to top](#table-of-contents)**
-
 ## Resolving Promises for a Controller
 
 ### Controller Activation Promises
@@ -2113,13 +1999,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   - Have a near term view of implementation and a long term vision. In other words, start small and but keep in mind on where the app is heading down the road. All of the app's code goes in a root folder named `app`. All content is 1 feature per file. Each controller, service, module, view is in its own file. All 3rd party vendor scripts are stored in another root folder and not in the `app` folder. I didn't write them and I don't want them cluttering my app (`bower_components`, `scripts`, `lib`).
 
     Note: Find more details and reasoning behind the structure at [this original post on application structure](http://www.johnpapa.net/angular-app-structuring-guidelines/).
-
-### Layout
-###### [Style [Y151](#style-y151)]
-
-  - Place components that define the overall layout of the application in a folder named `layout`. These may include a shell view and controller may act as the container for the app, navigation, menus, content areas, and other regions.
-
-    *Why?*: Organizes all layout in a single place re-used throughout the application.
 
 ### Folders-by-Feature Structure
 ###### [Style [Y152](#style-y152)]
