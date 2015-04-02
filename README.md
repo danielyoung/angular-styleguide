@@ -24,7 +24,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Table of Contents
 
   1. [Single Responsibility](#single-responsibility)
-  1. [IIFE](#iife)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
   1. [Services](#services)
@@ -59,7 +58,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Single Responsibility
 
 ### Rule of 1
-###### [Style [Y001](#style-y001)]
+###### [Style [Y001](#style-y001)] @discuss
 
   - Define 1 component per file.
 
@@ -1049,7 +1048,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
 
 ### Provide a Unique Directive Prefix
-###### [Style [Y073](#style-y073)]
+###### [Style [Y073](#style-y073)] @discuss
 
   - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which would be declared in HTML as `acme-sales-customer-info`.
 
@@ -1058,7 +1057,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     Note: Avoid `ng-` as these are reserved for Angular directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/).
 
 ### Restrict to Elements and Attributes
-###### [Style [Y074](#style-y074)]
+###### [Style [Y074](#style-y074)] @discuss
 
   - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when it's stand-alone and as an attribute when it enhances its existing DOM element.
 
@@ -1201,7 +1200,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Resolving Promises for a Controller
 
 ### Controller Activation Promises
-###### [Style [Y080](#style-y080)]
+###### [Style [Y080](#style-y080)] @discuss
 
   - Resolve start-up logic for a controller in an `activate` function.
 
@@ -1246,7 +1245,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Route Resolve Promises
-###### [Style [Y081](#style-y081)]
+###### [Style [Y081](#style-y081)] @discuss
 
   - When a controller depends on a promise to be resolved before the controller is activated, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
 
@@ -1377,7 +1376,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Manually Identify Dependencies
-###### [Style [Y091](#style-y091)]
+###### [Style [Y091](#style-y091)] @discuss
 
   - Use `$inject` to manually identify your dependencies for Angular components.
 
@@ -1488,7 +1487,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Minification and Annotation
 
 ### ng-annotate
-###### [Style [Y100](#style-y100)]
+###### [Style [Y100](#style-y100)] @discuss
 
   - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
 
@@ -1600,7 +1599,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ## Exception Handling
 
 ### decorators
-###### [Style [Y110](#style-y110)]
+###### [Style [Y110](#style-y110)] @discuss
 
   - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
 
@@ -1641,7 +1640,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Exception Catchers
-###### [Style [Y111](#style-y111)]
+###### [Style [Y111](#style-y111)] @discuss
 
   - Create a factory that exposes an interface to catch and gracefully handle exceptions.
 
@@ -1732,7 +1731,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: The naming conventions should simply help you find your code faster and make it easier to understand.
 
 ### Feature File Names
-###### [Style [Y121](#style-y121)]
+###### [Style [Y121](#style-y121)] 
+  @discuss We are mostly doing this, should this be formalised.
 
   - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
 
@@ -1799,7 +1799,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Test File Names
-###### [Style [Y122](#style-y122)]
+###### [Style [Y122](#style-y122)] @discuss
 
   - Name test specifications similar to the component they test with a suffix of `spec`.
 
@@ -1904,7 +1904,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     ```
 
 ### Modules
-###### [Style [Y127](#style-y127)]
+###### [Style [Y127](#style-y127)] @discuss
 
   - When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.
 
@@ -1913,7 +1913,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
 
 ### Configuration
-###### [Style [Y128](#style-y128)]
+###### [Style [Y128](#style-y128)] @discuss
 
   - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
 
@@ -1922,7 +1922,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: Provides an identifiable place to set configuration for a module.
 
 ### Routes
-###### [Style [Y129](#style-y129)]
+###### [Style [Y129](#style-y129)] @discuss
 
   - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
 
@@ -2107,7 +2107,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     *Why?*: Modular applications make it easy to plug and go as they allow the development teams to build vertical slices of the applications and roll out incrementally. This means we can plug in new features as we develop them.
 
 ### Create an App Module
-###### [Style [Y161](#style-y161)]
+###### [Style [Y161](#style-y161)] @discuss
 
   - Create an application root module whose role is pull together all of the modules and features of your application. Name this for your application.
 
@@ -2196,7 +2196,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   ```
 
 ### Run Blocks
-###### [Style [Y171](#style-y171)]
+###### [Style [Y171](#style-y171)] @discuss
 
   - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
 
@@ -2288,7 +2288,7 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
     *Why?*: Karma works well with task automation leaders such as [Grunt](http://www.gruntjs.com) (with [grunt-karma](https://github.com/karma-runner/grunt-karma)) and [Gulp](http://www.gulpjs.com) (with [gulp-karma](https://github.com/lazd/gulp-karma)).
 
 ### Stubbing and Spying
-###### [Style [Y193](#style-y193)]
+###### [Style [Y193](#style-y193)] @discuss
 
   - Use [Sinon](http://sinonjs.org/) for stubbing and spying.
 
