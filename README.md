@@ -291,13 +291,6 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
-
-  ```javascript
-  /* jshint validthis: true */
-  var vm = this;
-  ```
-
   Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
 
   ```html
@@ -1566,7 +1559,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     The following code is an example of a gulp task using ngAnnotate
 
     ```javascript
-    gulp.task('js', ['jshint'], function() {
+    gulp.task('js', ['eslint'], function() {
         var source = pkg.paths.js;
 
         return gulp.src(source)
@@ -2303,28 +2296,23 @@ Unit testing helps maintain clean code, as such I included some of my recommenda
 ### Code Analysis
 ###### [Style [Y195](#style-y195)]
 
-  - Run JSHint on your tests.
+  - Run ESlint on your tests.
 
-    *Why?*: Tests are code. JSHint can help identify code quality issues that may cause the test to work improperly.
+    *Why?*: Tests are code. ESlint can help identify code quality issues that may cause the test to work improperly.
 
-### Alleviate Globals for JSHint Rules on Tests
+### Alleviate Globals for ESlint Rules on Tests
 ###### [Style [Y196](#style-y196)]
 
   - Relax the rules on your test code to allow for common globals such as `describe` and `expect`. Relax the rules for expressions, as Mocha uses these.
 
     *Why?*: Your tests are code and require the same attention and code quality rules as all of your production code. However, global variables used by the testing framework, for example, can be relaxed by including this in your test specs.
 
-    ```javascript
-    /* jshint -W117, -W030 */
-    ```
-    Or you can add the following to your JSHint Options file.
+    Add the following to your ESlint Config file.
 
     ```javascript
     "jasmine": true,
     "mocha": true,
     ```
-
-  ![Testing Tools](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/testing-tools.png)
 
 ### Organizing Tests
 ###### [Style [Y197](#style-y197)]
