@@ -1026,7 +1026,7 @@
     Note: Avoid `ng-` as these are reserved for Angular directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/).
 
 ### Restrict to Elements and Attributes
-###### [Style [Y074](#style-y074)] @discuss
+###### [Style [Y074](#style-y074)]
 
   - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when it's stand-alone and as an attribute when it enhances its existing DOM element.
 
@@ -1456,7 +1456,7 @@
 ## Minification and Annotation
 
 ### ng-annotate
-###### [Style [Y100](#style-y100)] @discuss
+###### [Style [Y100](#style-y100)]
 
   - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
 
