@@ -2,7 +2,7 @@
 
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
-*The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
+*The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.*
 
 ## Table of Contents
 
