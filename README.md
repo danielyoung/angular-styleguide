@@ -345,41 +345,7 @@
       }
   ```
 
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/assets/above-the-fold-1.png)
-
   Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
-
-  ```javascript
-  /* avoid */
-  function Sessions(data) {
-      var vm = this;
-
-      vm.gotoSession = gotoSession;
-      vm.refresh = function() {
-          /**
-           * lines
-           * of
-           * code
-           * affects
-           * readability
-           */
-      };
-      vm.search = search;
-      vm.sessions = [];
-      vm.title = 'Sessions';
-  ```
-
-  ```javascript
-  /* recommended */
-  function Sessions(dataservice) {
-      var vm = this;
-
-      vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // 1 liner is OK
-      vm.search = search;
-      vm.sessions = [];
-      vm.title = 'Sessions';
-  ```
 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y034](#style-y034)]
