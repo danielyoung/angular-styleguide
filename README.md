@@ -1890,13 +1890,6 @@
 
     *Why?*: Provides an identifiable place to set configuration for a module.
 
-### Routes
-###### [Style [Y129](#style-y129)] @discuss
-
-  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
-
-**[Back to top](#table-of-contents)**
-
 ## Application Structure LIFT Principle
 ### LIFT
 ###### [Style [Y140](#style-y140)]
