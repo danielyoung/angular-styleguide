@@ -1504,9 +1504,9 @@
     // logger.service.js
     angular
         .module
-        .factory('logger', logger);
+        .factory('Logger', LoggerFactory);
 
-    function logger() { }
+    function LoggerFactory() { }
     ```
 
 ### Directive Component Names
@@ -1524,11 +1524,11 @@
     // avenger-profile.directive.js
     angular
         .module
-        .directive('xxAvengerProfile', xxAvengerProfile);
+        .directive('xxAvengerProfile', AvengerProfile);
 
     // usage is <xx-avenger-profile> </xx-avenger-profile>
 
-    function xxAvengerProfile() { }
+    function AvengerProfile() { }
     ```
 
 ### Modules
